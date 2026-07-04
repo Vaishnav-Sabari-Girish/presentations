@@ -7,4 +7,4 @@
 ## Where I have presented `comchan`
 
 1. Rust Bangalore
-  - [July 2026 Meetup](https://hasgeek.com/rustbangalore/july-2026-rustacean-meetup/)
+    - [July 2026 Meetup](https://hasgeek.com/rustbangalore/july-2026-rustacean-meetup/)
