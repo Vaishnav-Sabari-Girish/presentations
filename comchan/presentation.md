@@ -272,6 +272,64 @@ Advanced and Experimental (But still very usable)
 
 <!--end_slide-->
 
+Ratatui-Wireframe crate
+---
+
+## Features 
+
+- **Zero-dependency braille 3D**: Pure math projecting to braille characters.
+- **Dynamic Orientation**: Real-time pitch, yaw and roll integration.
+- **Built-in models**: Cube, Tetrahedron and Octahedron.
+- **Custom loading**: Uses a custom `.wrfm` format. (Very similar to `.obj`)
+- **Renders 3D models**: via `ratty` terminal and `.obj` files.
+
+
+## Code Example
+
+```rust +line_numbers
+use ratatui_wireframe::{WireframeWidget, model::Model};
+use ratatui::style::Color;
+
+let my_model = Model::cube();
+
+let wireframe = WireframeWidget::new(pitch, yaw, roll)
+    .title("3D telemetry")
+    .color(Color::Cyan)
+    .model(my_model);
+
+f.render_widget(wireframe, layout);
+```
+
+<!--end_slide-->
+
+Wrfm File format
+---
+
+This is a custom file format defined to render braille 3D wireframes in the terminal using `ratatui_wireframe` crate. 
+
+## Example `wrfm` file 
+
+```obj +line_numbers
+v 0 1 0     # Vertices
+v -1 0 0
+v 1 0 0
+e 0 1       # Edges
+e 0 2
+```
+
+## Implementation using `ratatui_wireframe`
+
+```rust +line_numbers
+let model = Model::from_wrfm(file);
+let wf = WireframeWidget::new(p, y, r)
+    .title("Custom 3D braille model")
+    .color(Color::Green)
+    .model(model);
+
+f.render_widget(wf, layout);
+```
+
+<!--end_slide-->
 <!--jump_to_middle-->
 
 Live Demo
