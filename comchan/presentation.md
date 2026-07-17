@@ -33,7 +33,7 @@ What is ComChan
 1. Terminal-first serial monitor written in Rust.
 2. Designed for Embedded Engineers who love the terminal more than the Arduino IDE or VSCode (PlatformIO).
 3. Logging, Plotting, Replay, Telemetry (3D) and dual view.
-4. Works with UART, RTT, `defmt` and BLE.
+4. Works with UART, `defmt` and BLE.
 
 
 ![image:width:30%](./assets/rat-noted.gif)
@@ -134,7 +134,7 @@ Why Rust ?
 ## Major Crates
 ```text
 serialport          (Serial Port functions)
-mpsc                (For Concurrency)
+mpsc                (Inter-thread communication)
 ratatui             (TUI)
 clap                (CLI)
 crossterm           (Backend)
@@ -262,7 +262,7 @@ Advanced and Experimental (But still very usable)
 
 ## 3D Telemetry
 
-- **Custom 3D engine (Very minimal)**: Visualizes IMU spatial rotations natively, with almost 0 lag (`pitch`, `yaw`, `roll`).
+- **Custom 3D renderer (Very minimal)**: Visualizes IMU spatial rotations natively, with almost 0 lag (`pitch`, `yaw`, `roll`).
 - Powered by `ratatui_wireframe`
 - Fast braille 3D model rendering (Default).
 - 3D model (`.obj`) rendering (Using the `ratty` terminal emulator and `ratatui_ratty` crate).

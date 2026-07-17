@@ -12,8 +12,16 @@ if ! command -v presenterm &>/dev/null; then
 fi
 
 [ -z "$PRESENT_MODE" ] && args="" || args="-p"
-wezterm \
-  start presenterm \
-  "$PWD"/presentation.md \
-  --config-file "$PWD"/config/presenterm.yml \
-  -X $args &
+
+# Check if we are already running inside WezTerm
+if [ -n "$WEZTERM_EXECUTABLE" ]; then
+  # Run directly in the current terminal
+  presenterm "$PWD"/presentation.md --config-file "$PWD"/config/presenterm.yml -X $args
+else
+  # Spawn a new WezTerm window
+  wezterm \
+    start presenterm \
+    "$PWD"/presentation.md \
+    --config-file "$PWD"/config/presenterm.yml \
+    -X $args &
+fi
